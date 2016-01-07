@@ -1,5 +1,6 @@
 # Build (or rebuild) using
-# docker build -t="jeffdavisco/polymer-python:latest" .
+# docker build - < Dockerfile NOT USED
+#docker build -t="jeffdavisco/intranetlinkchecker:latest" .
 
 # Pull base image.
 FROM ubuntu
@@ -24,10 +25,10 @@ RUN mkdir -p /local/git
 WORKDIR /local/git/
 
 # Install the test webapp
-RUN git clone https://github.com/dajevu/docker-python
-WORKDIR /local/git/docker-python
+RUN git clone https://github.com/dajevu/intranetlinkchecker/
+WORKDIR /local/git/intranetlinkchecker
 
-#RUN chmod +x /local/git/docker-python/run.sh
+#RUN chmod +x /local/git/intranetlinkchecker/run.sh
 # run startup script
 
 #CMD ["run.sh"]

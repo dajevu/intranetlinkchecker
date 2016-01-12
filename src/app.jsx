@@ -57,12 +57,20 @@ var App = React.createClass({
 
     this.setState({category : option, categoryId: optionId});
 
+    console.log(filter);
+
     fb = new Firebase(rootUrl + optionId + '/' + encodeURIComponent(option) + '/');
     if (filter === "All" || filter === undefined)
-      filter = '';
-    this.bindAsObject(fb.orderByChild("Use").equalTo(encodeURIComponent(filter)), 'items'); 
-    
-    fb.once('value', this.handleDataLoaded);
+      this.bindAsObject(fb.orderByChild("Use"), 'items');
+    else {
+      if (filter === "Use")
+        this.bindAsObject(fb.orderByChild("Use").equalTo("Use"), 'items'); 
+      else if (filter === "Do Not Use")
+        this.bindAsObject(fb.orderByChild("Use").equalTo("Do Not Use"), 'items'); 
+
+    }
+
+    fb.on('value', this.handleDataLoaded);
 
   },
   render: function() {
@@ -72,7 +80,7 @@ var App = React.createClass({
     		    			<h2 className="text-center">Intranet Manager</h2>
     		    		</div>
     		    	</div>
-  	    			<Header itemsStore={this.firebaseRefs.items} whenClicked={this.handleSelection} selectionItems={this.props} />
+  	    			<Header itemsStore={this.firebaseRefs.items} whenClicked={this.handleSelection} selectionItems={this.props} rootUrl={this.state.rootUrl}/>
               <div className="row">
     	    			<div className={"content " + (this.state.loaded ? 'loaded' : '')}>
     	    				<List rootUrl={this.state.rootUrl} category={this.state.category} categoryId={this.state.categoryId} items={this.state.items} selectionItems={this.props} itemsStore={this.firebase}/>

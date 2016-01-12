@@ -24,7 +24,6 @@ module.exports = React.createClass({
 	render: function() {
 		var selval = this.state.classification;
 		var show = false;
-		console.log(selval);
 
 		return <div className="col-lg-1">
 					<div className="input-group">

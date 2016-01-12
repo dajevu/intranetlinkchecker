@@ -11,7 +11,7 @@ MAINTAINER Jeff Davis "jeffdavisco@gmail.com"
 # Install Python.
 RUN \
   apt-get update && \
-  apt-get install -y git python python-dev python-pip python-virtualenv && \
+  apt-get install -y curl git python python-dev python-pip python-virtualenv && \
   rm -rf /var/lib/apt/lists/*
 
 # Define working directory.

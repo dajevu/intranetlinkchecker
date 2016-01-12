@@ -16,8 +16,6 @@ module.exports = React.createClass({
 	},
 	componentWillReceiveProps: function(nextProps){
 		this.setState({ items: {}});
-		console.log("Inside componentWillReceiveProps");
-		console.log(nextProps);
 		this.setState({ items: nextProps.items});
 	},
 	render: function() {
@@ -32,21 +30,19 @@ module.exports = React.createClass({
 		return <div>
 			<div className="row" style={style}>
 				<div className="col-lg-1"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Subject Classification</button></div>
-				<div className="col-lg-1"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Sub-Section</button></div>	
-				<div className="col-lg-2"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Page Title</button></div>	
-				<div className="col-lg-3"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Link</button></div>	
+				<div className="col-lg-1 widen"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Sub-Section</button></div>	
+				<div className="col-lg-3"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Comments</button></div>	
+				<div className="col-lg-1 link-button"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Link</button></div>	
+				<div className="col-lg-1 shorten"><button  style={header2} type="button" className="btn btn-default dropdown-toggle">Use/Not Use</button></div>	
 			</div>
 			{this.renderList()}
 		</div>	
 	},
 	renderList: function() {
-		console.log("Rendering list");
-		console.log(this.state.items.length);
 
 			var children = [];
 
 			{for (var key in this.state.items) {
-				console.log("key is: " + key);
 				var item = this.state.items[key];
 				var itemKey = key;
 				children.push(

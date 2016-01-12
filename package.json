@@ -21,6 +21,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-input-autosize": "^0.6.6",
+    "react-modal": "^0.6.1",
     "react-select": "^0.9.1",
     "reactfire": "^0.4.0",
     "reactify": "^1.1.0",

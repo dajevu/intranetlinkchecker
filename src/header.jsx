@@ -89,6 +89,7 @@ module.exports = React.createClass({
 			URL : this.state.newURL
 		});
 		this.setState({modalIsOpen: false});
+		this.props.whenClicked(this.state.newClassification, this.state.newClassificationId);
 	},
 	render: function () {
 		var validationOk = false
@@ -185,7 +186,7 @@ module.exports = React.createClass({
 				<div className="col-lg-1" >
 					<div className="input-group">
 						<div className="input-group-btn">
-							<button type="button" className={"btn btn-default dropdown-toggle"} 
+							<button type="button" className={"btn btn-default dropdown-toggle " + ((this.state.itemSelected === "Select a Category...") ? "hide"  : "") } 
 								onClick={this.handleClick2} style={style2}
 								>{this.state.useSelected}<span className="caret"></span>
 							</button>
